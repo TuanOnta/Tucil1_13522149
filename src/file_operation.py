@@ -1,7 +1,7 @@
 def readFile(filename):
     # Membaca file txt
     file_path = 'dummy.txt'  # Gantilah 'nama_file.txt' dengan nama file yang sesuai
-    with open(file_path, 'r') as file:
+    with open(filename, 'r') as file:
         lines = file.readlines()
 
     # Mengonversi isi file menjadi array
@@ -27,16 +27,10 @@ def readFile(filename):
     number_of_sequence = int(array_data[matrix_height+2][0])
 
     # Mengkonversi sequence ke dalam array
-    array_of_sequence = [0 for i in range(number_of_sequence)]
-    array_of_value = [0 for i in range(number_of_sequence)]
+    array_of_sequence = [array_data[matrix_height+3+i] for i in range(0, 2*number_of_sequence, 2)]
+    array_of_value = [int(array_data[matrix_height+3+i][0]) for i in range(1, 2*number_of_sequence, 2)]
 
-    for i in range(number_of_sequence):
-        if(i % 2 == 0):
-            array_of_sequence[i] = array_data[matrix_height+3+i]
-        else:
-            array_of_value[i] = int(array_data[matrix_height+3+i][0])
-
-    return buffer_size,matrix_width,matrix_height, number_of_sequence,array_of_sequence,array_of_value,matrix
+    return buffer_size, matrix_width, matrix_height, number_of_sequence, array_of_sequence, array_of_value, matrix
 
 
 
