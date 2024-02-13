@@ -1,6 +1,6 @@
 def readFile(filename):
     # Membaca file txt
-    file_path = 'dummy.txt'  # Gantilah 'nama_file.txt' dengan nama file yang sesuai
+    filename = "test/"+ filename  +".txt"# Gantilah 'nama_file.txt' dengan nama file yang sesuai
     with open(filename, 'r') as file:
         lines = file.readlines()
 
@@ -31,6 +31,21 @@ def readFile(filename):
     array_of_value = [int(array_data[matrix_height+3+i][0]) for i in range(1, 2*number_of_sequence, 2)]
 
     return buffer_size, matrix_width, matrix_height, number_of_sequence, array_of_sequence, array_of_value, matrix
+
+def saveFile(filename,value,sequence,array_of_coodinate,time):
+    try:
+        with open("test/" + filename + ".txt", 'w') as file:
+            file.write(f"{value}\n")
+            for i in sequence:
+                file.write(f"{i} ")
+            file.write("\n")
+            for i in array_of_coodinate:
+                file.write(f"{i}\n")
+            file.write("\n")
+            file.write(f"{time}ms\n\n")
+        print(f"berhasil disimpan kedalam {filename}.txt")
+    except Exception as e:
+        print(f"Terjadi kesalahan: {str(e)}")
 
 
 
